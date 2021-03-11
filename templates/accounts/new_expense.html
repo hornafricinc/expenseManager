@@ -1,0 +1,99 @@
+{% extends 'accounts/index.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col s12 m8 offset-m2">
+            <h3 class="center-align">New Expense</h3>
+                  <div class="col s12 m8 offset-m2">
+                    <div class="card">
+                        <div class="card-content">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                 {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                             <span class="green-text center-align">
+                                      {{ message }}
+                             </span>
+
+                            {% else %}
+                             <span class="red-text center-align">
+                                 <!--Here Goes the Messages-->
+
+                                {{ message}}
+                              </span>
+
+                        {% endif %}
+
+
+                    {% endfor %}
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="text" placeholder="Hospital Bill Fundraising ...." class="validate" required name="e_title" id="id_title">
+                                        <label for="id_title">Expenditure Title</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <select name="category">
+                                          <option value="" disabled selected>CHOOSE CATEGORY</option>
+                                          <option value="personal">PERSONAL DEVELOPMENT</option>
+                                          <option value="others">OTHER PEOPLE AID</option>
+                                          <option value="donation">DONATION</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="text" placeholder="Name of recipient e.g Cornelius Kipkorir" class="validate" required name="r_name" id="id_rname">
+                                        <label for="id_rname">Recipient Name</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="text" placeholder="Phone Number (07xxxxxxxx)" class="validate" required name="r_phone" id="id_rphone">
+                                        <label for="id_rphone">Recipient Phone</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="number" placeholder="Amount Spent (5000)" class="validate" required name="e_amount" id="id_eamount">
+                                        <label for="id_eamount">Amount</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+
+                                        <select name="payment_method">
+                                          <option value="" disabled selected>CHOOSE PAYMENT METHOD</option>
+                                          <option value="mpesa">MPESA</option>
+                                          <option value="cash">CASH</option>
+                                          <option value="bank">BANK</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="text" placeholder="Pick Event Date" class="datepicker" required name="e_eventdate" id="id_eeventdate">
+                                        <label for="id_eeventdate">Event Date</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12 m8 offset-m2">
+                                        <button type="submit" class="em-btn btn">Record Expense</button>
+                                    </div>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

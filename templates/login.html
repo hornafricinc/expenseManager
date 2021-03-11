@@ -1,0 +1,54 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+       <div class="card">
+           <div class="card-content">
+               <p class="center-align"><img src="{% static 'images/logo.png' %}"></p>
+               <h6 class="center-align">User Login</h6>
+
+    <form action="" method="post">
+        {% csrf_token %}
+         {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                             <p class="green-text center-align">
+                                      {{ message }}
+                             </p>
+
+                            {% else %}
+                             <p class="red-text center-align">
+                                 <!--Here Goes the Messages-->
+
+                                {{ message}}
+                              </p>
+
+                        {% endif %}
+
+
+                    {% endfor %}
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Email Address" id="id_email" name="email" type="email" class="validate" id="id_email" required>
+          <label for="id_email">Email Address</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input  placeholder="Password" id="id_pass" type="password" class="validate" name="password" required>
+          <label for="id_pass">Password</label>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <button type="submit" class="btn em-btn btn-block">Log In</button>
+            </div>
+        </div>
+        <p class="center-align">Don't have an account yet ? <a href="{% url 'accounts:signup' %}">Create Account</a> </p>
+    </form>
+
+           </div>
+       </div>
+    </div>
+</div>
+{% endblock %}

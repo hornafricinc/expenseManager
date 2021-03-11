@@ -1,0 +1,66 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+       <div class="card">
+           <div class="card-content">
+               <p class="center-align"><img src="{% static 'images/logo.png' %}"></p>
+               <h6 class="center-align">CREATE ACCOUNT</h6>
+
+    <form method="post" action="">
+        {% csrf_token %}
+         {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                             <span class="green-text center-align">
+                                      {{ message }}
+                             </span>
+
+                            {% else %}
+                             <span class="red-text center-align">
+                                 <!--Here Goes the Messages-->
+
+                                {{ message}}
+                              </span>
+
+                        {% endif %}
+
+
+                    {% endfor %}
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Email Address" name="email" id="id_email" type="email" class="validate" required>
+          <label for="id_email">Email Address</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input  placeholder="First Name" name="fname" id="id_fname" type="text" class="validate" required>
+          <label for="id_fname">First Name</label>
+        </div>
+      </div>
+         <div class="row">
+        <div class="input-field col s12">
+          <input  placeholder="Last Name" name="lname" id="id_lname" type="text" class="validate" required>
+          <label for="id_lname">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input  placeholder="Create Password" name="password" id="id_password" type="password" class="validate" required>
+          <label for="id_password">Password</label>
+        </div>
+      </div>
+        <div class="row">
+            <div class="col s12 m6 offset-m3">
+                <button type="submit" class="btn em-btn btn-block">Create Account</button>
+            </div>
+        </div>
+        <p class="center-align">Already have an account ? <a href="{% url 'accounts:index' %}">Sign In</a> </p>
+    </form>
+
+           </div>
+       </div>
+    </div>
+</div>
+{% endblock %}

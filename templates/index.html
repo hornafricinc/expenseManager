@@ -1,0 +1,50 @@
+{% extends 'menu.html' %}
+{% load static %}
+{% block content %}
+<nav class="white">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="{% static 'images/logo.png' %}" height="62"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="{% url 'accounts:signup' %}"><i class="material-icons left">person_add</i>Create Account</a></li>
+        <li><a href="{% url 'accounts:signin' %}"><i class="material-icons left">settings_power</i>Login</a></li>
+      </ul>
+    </div>
+  </nav>
+    <div class="row" style="margin-top: 20px">
+    <div class="col s12 m4">
+        <img src="{% static 'images/expenditure.jpeg' %}">
+    </div>
+    <div class="col s12 m8" style="margin-top: 20px">
+        <h5>Do you know how much you have spent?</h5>
+         <p>Get ready to record every expenditure you incur in our application. The application will give you complex analysis
+         based on the expenses recorded.</p>
+    </div>
+    </div>
+
+     <div class="row">
+    <div class="col s12 m8">
+         <h5>What are your sources of revenue?</h5>
+       <p>Get to know and record all your revenue/icome sources for easy analysis and management. The application
+       gives ana analytical algorithm and gives recommendations on where to put more effort based on revenue sources captured
+       in your system.</p>
+    </div>
+    <div class="col s12 m4"  style="margin-top: 70px">
+
+
+    <img src="{% static 'images/rev.jpeg' %}">
+    </div>
+    </div>
+
+        <div class="row">
+
+    <div class="col s12 m4"  style="margin-top: 70px">
+    <img src="{% static 'images/fpos.jpeg' %}">
+    </div>
+           <div class="col s12 m8">
+         <h5>What is your financial position?</h5>
+       <p>The current balances from all expenses and revenue recived will give you your financial position. Our system has the
+       best recommendation as warning signs based on the recorded reveue and expense. The system also gives best suggestions on financial
+       management activities to help improve the lives of the members.</p>
+    </div>
+    </div>
+{% endblock %}

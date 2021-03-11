@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>ExpenseManager| LEADING PERSONAL BUDGET CONTROLLER</title>
+    <!--MATERIAL ICONS-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+          <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+        .nav-wrapper ul li a{
+              color: blueviolet;
+          }
+        .nav-wrapper ul li a:hover{
+                    background-color: blueviolet;
+                    color: white;
+                    border-radius: 30px;
+            }
+        h1,h2,h3,h4,h5,h6{
+            color: blueviolet;
+        }
+        p{
+            font-size: 25px;
+        }
+    </style>
+
+</head>
+<body class="container">
+{% block content %}
+
+
+{% endblock %}
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
