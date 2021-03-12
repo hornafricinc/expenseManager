@@ -14,5 +14,7 @@ urlpatterns=[
     path('accounts/revenue/', views.revenue_summary, name='revenue'),
     path('accounts/revenue/new_revenue/', views.new_revenue, name='new_revenue'),
 
+    path('logout/',views.logout_user,name='logout'),
+
 ]
 

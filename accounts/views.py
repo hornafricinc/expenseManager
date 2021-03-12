@@ -1,7 +1,7 @@
 import datetime
 
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
 from django.db.models import Sum
@@ -134,3 +134,6 @@ def new_revenue(request):
         revenue.save()
         messages.success(request,"Revenue Recorded Successfully")
     return render(request,'accounts/new_revenue.html')
+def logout_user(request):
+    logout(request)
+    return redirect('accounts:signin')

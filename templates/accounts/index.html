@@ -16,7 +16,7 @@
 {% block content %}
     <div class="row">
         <div class="col s12 m8 offset-m2">
-            <h5 class="center-align">{{ request.user.first_name }}  Welcome to Your DashBoard</h5>
+            <h5 class="center-align">{{ request.user.first_name }}  Welcome to Your DashBoard <a class="btn em-btn" href="{% url 'accounts:logout' %}">Log Out</a> </h5>
             <!--First Row-->
             <div class="row">
                 <div class="col s12 m4">
