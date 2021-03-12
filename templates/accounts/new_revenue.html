@@ -3,7 +3,8 @@
 {% block content %}
     <div class="row">
         <div class="col s12 m8 offset-m2">
-            <h3 class="center-align">New Expense</h3>
+            <p class="center-align"><a class="btn em-btn" href="{% url 'accounts:revenue' %}"><i class="material-icons left">skip_previous</i> GO BACK</a> </p>
+            <h3 class="center-align">New Revenue</h3>
                   <div class="col s12 m8 offset-m2">
                     <div class="card">
                         <div class="card-content">
@@ -28,35 +29,26 @@
                     {% endfor %}
                                 <div class="row">
                                     <div class="input-field col s12 m12">
-                                        <input type="text" placeholder="Hospital Bill Fundraising ...." class="validate" required name="e_title" id="id_title">
-                                        <label for="id_title">Expenditure Title</label>
+                                        <input type="text" placeholder="Developed a Website" class="validate" required name="service" id="id_title">
+                                        <label for="id_title">Service Offered</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12 m12">
+                                        <input type="text" placeholder="Name of the service receiver e.g Cornelius Kipkorir" class="validate" required name="payer_name" id="id_rname">
+                                        <label for="id_rname">PAYER NAME</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12 m12">
-                                        <select name="category">
-                                          <option value="" disabled selected>CHOOSE CATEGORY</option>
-                                          <option value="personal">PERSONAL DEVELOPMENT</option>
-                                          <option value="others">OTHER PEOPLE AID</option>
-                                          <option value="donation">DONATION</option>
-                                        </select>
+                                        <input type="text" placeholder="Phone number of the service receiver" class="validate" required name="payer_phone" id="id_rphone">
+                                        <label for="id_rphone">PAYER PHONE</label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-field col s12 m12">
-                                        <input type="text" placeholder="Name of recipient e.g Cornelius Kipkorir" class="validate" required name="r_name" id="id_rname">
-                                        <label for="id_rname">Recipient Name</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m12">
-                                        <input type="text" placeholder="Phone Number (07xxxxxxxx)" class="validate" required name="r_phone" id="id_rphone">
-                                        <label for="id_rphone">Recipient Phone</label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field col s12 m12">
-                                        <input type="number" placeholder="Amount Spent (5000)" class="validate" required name="e_amount" id="id_eamount">
+                                        <input type="number" placeholder="Amount Spent (5000)" class="validate" required name="amount" id="id_eamount">
                                         <label for="id_eamount">Amount</label>
                                     </div>
                                 </div>
@@ -72,14 +64,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="input-field col s12 m12">
-                                        <input type="text" placeholder="Pick Event Date" class="datepicker" required name="e_eventdate" id="id_eeventdate">
-                                        <label for="id_eeventdate">Event Date</label>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="input-field col s12 m8 offset-m2">
-                                        <button type="submit" class="em-btn btn">Record Expense</button>
+                                        <button type="submit" class="em-btn btn"><i class="material-icons left">paid</i> Record Revenue</button>
                                     </div>
                                 </div>
 

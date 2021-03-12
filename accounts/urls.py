@@ -11,5 +11,8 @@ urlpatterns=[
     path('accounts/expenditure/', views.expenditure, name='expenditure'),
     path('accounts/expenditure/new_expenditure/', views.new_expenditure, name='new_expense'),
 
+    path('accounts/revenue/', views.revenue_summary, name='revenue'),
+    path('accounts/revenue/new_revenue/', views.new_revenue, name='new_revenue'),
+
 ]
 

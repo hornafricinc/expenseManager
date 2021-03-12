@@ -61,3 +61,14 @@ class Expenditure(models.Model):
 
     class Meta:
         db_table='expenditure'
+class Revenue(models.Model):
+    service_offered=models.CharField(max_length=32,blank=False)
+    payer_contact=models.CharField(max_length=13,blank=False)
+    payer_name=models.CharField(max_length=50,blank=False)
+    receiver=models.ForeignKey(ExpenseManagerUser,on_delete=models.CASCADE)
+    payment_method=models.CharField(max_length=20,blank=False)
+    date_recorded=models.DateTimeField(auto_now_add=True)
+    amount_received=models.DecimalField(decimal_places=2,max_digits=10)
+
+    class Meta:
+        db_table='revenue'

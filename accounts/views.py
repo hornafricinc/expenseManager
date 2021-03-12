@@ -10,7 +10,9 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from django.views.generic import TemplateView
 
-from accounts.models import ExpenseManagerUser, Expenditure
+from accounts.core.common_functions import CommonFunctions
+from accounts.models import ExpenseManagerUser, Expenditure, Revenue
+
 
 class Index(TemplateView):
     template_name = 'index.html'
@@ -45,7 +47,17 @@ def create_account(request):
     return render(request,'signup.html')
 @login_required(login_url='accounts:index')
 def user_dashboard(request):
-    return render(request,'accounts/index.html')
+    commonF=CommonFunctions()
+    expenses=commonF.get_individual_total_expenditure(request.user)
+    revenue=commonF.get_individual_total_income(request.user)
+    runningBalance=revenue-expenses
+
+    context={
+        'expense':expenses,
+        'revenue':revenue,
+        'running_balance':runningBalance,
+    }
+    return render(request,'accounts/index.html',context)
 @login_required(login_url='accounts:index')
 def expenditure(request):
     all_expenses=Expenditure.objects.filter(donor=request.user).order_by('event_date')
@@ -83,3 +95,42 @@ def new_expenditure(request):
         expenditure.save()
         messages.success(request,"Expenditure Recorded Successfully")
     return render(request,'accounts/new_expense.html')
+
+@login_required(login_url='accounts:index')
+def revenue_summary(request):
+    all_revenue=Revenue.objects.filter(receiver=request.user).order_by('date_recorded')
+    total_revenue=Revenue.objects.filter(receiver=request.user).aggregate(Sum('amount_received'))
+    total_events=Revenue.objects.filter(receiver=request.user).count()
+    context={
+        'revenue':all_revenue,
+        'total_revenue':total_revenue,
+        'total_events':total_events,
+    }
+
+    return render(request,'accounts/revenue_summary.html',context)
+
+
+@login_required(login_url='accounts:index')
+def new_revenue(request):
+    if request.method == 'POST':
+        service=request.POST['service']
+        payer_name = request.POST['payer_name']
+        payer_phone = request.POST['payer_phone']
+        amount = request.POST['amount']
+        payment_method = request.POST['payment_method']
+
+
+
+        revenue=Revenue()
+        revenue.service_offered=service
+        revenue.payer_name = payer_name
+        revenue.payer_contact = payer_phone
+        revenue.amount_received = amount
+        revenue.payement_method = payment_method
+
+
+
+        revenue.receiver = request.user
+        revenue.save()
+        messages.success(request,"Revenue Recorded Successfully")
+    return render(request,'accounts/new_revenue.html')

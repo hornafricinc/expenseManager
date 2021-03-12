@@ -3,41 +3,38 @@
 {% block content %}
     <div class="row">
         <div class="col s12 m10 offset-m1">
-            <h3 class="center-align">ALL MY EXPENSES SUMMARY</h3>
+            <h3 class="center-align">ALL MY REVENUE SUMMARY</h3>
           <p class="center-align"><a class="btn em-btn" href="{% url 'accounts:user_dashboard' %}"><i class="material-icons left">home</i>Home </a> </p>
-            <p class="center-align"><a href="{% url 'accounts:new_expense' %}" class="btn em-btn">New Expense</a> </p>
+            <p class="center-align"><a href="{% url 'accounts:new_revenue' %}" class="btn em-btn">New Revenue</a> </p>
             <div class="row">
                 <div class="col s12 m12">
                     <table>
         <thead>
           <tr>
               <th>#</th>
-              <th>Expense Title</th>
-              <th>Expense Category</th>
-              <th>Recipient Phone</th>
-              <th>Recipient Name</th>
-              <th>Amount Spent</th>
-              <th>Date Sent</th>
-              <th>Event Date</th>
+              <th>Service Offered</th>
+
+              <th>Payer Phone</th>
+              <th>Payer Name</th>
+              <th>Service Amount</th>
+              <th>Date Recorded</th>
           </tr>
         </thead>
 
         <tbody>
-        {% for expense in expenditure %}
+        {% for rev in revenue %}
           <tr>
             <td>{{ forloop.counter }}</td>
-            <td>{{ expense.title }}</td>
-            <td>{{ expense.category }}</td>
-          <td>{{ expense.recipient_phone }}</td>
-          <td>{{ expense.recipient_name }}</td>
-          <td>{{ expense.amount_spent }}</td>
-          <td>{{ expense.date_registered |date }}</td>
-          <td>{{ expense.event_date|date }}</td>
+            <td>{{ rev.service_offered }}</td>
+          <td>{{ rev.payer_contact }}</td>
+          <td>{{ rev.payer_name }}</td>
+          <td>{{ rev.amount_received }}</td>
+          <td>{{ rev.date_recorded |date }}</td>
           </tr>
         {% endfor %}
         </tbody>
       </table>
-                <p class="center-align" style="color: blueviolet">Total Events:<b>{{ total_events }}</b> Total Expense: <b>Ksh.{{ total_expenditure.amount_spent__sum }}</b></p>
+                <p class="center-align" style="color: blueviolet">Total Events:<b>{{ total_events }}</b> Total Revenue: <b>Ksh.{{ total_revenue.amount_received__sum }}</b></p>
 
                 </div>
             </div>

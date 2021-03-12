@@ -16,7 +16,48 @@
 {% block content %}
     <div class="row">
         <div class="col s12 m8 offset-m2">
-            <h3 class="center-align">{{ request.user.first_name }}  Welcome to Your DashBoard</h3>
+            <h5 class="center-align">{{ request.user.first_name }}  Welcome to Your DashBoard</h5>
+            <!--First Row-->
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="card center-align">
+                        <div class="card-content">
+                            <span class="material-icons" style="font-size: 50px;color: blueviolet">
+                                account_balance
+                            </span>
+                            {% if running_balance < 0 %}
+                                <h5 class="red-text">Ksh.{{ running_balance }}</h5>
+                                {% else %}
+                                <h5 class="green-text">Ksh.{{ running_balance }}</h5>
+                            {% endif %}
+
+                            <p>Current Balance</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card center-align">
+                        <div class="card-content">
+                            <span class="material-icons" style="font-size: 50px;color: blueviolet">
+                                paid
+                            </span>
+                            <h5>Ksh.{{ revenue }}</h5>
+                            <p>Total Income</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card center-align">
+                        <div class="card-content">
+                            <span class="material-icons" style="font-size: 50px;color: blueviolet">
+                                shopping_cart
+                            </span>
+                            <h5>Ksh.{{ expense }}</h5>
+                            <p>Total Expenditure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col s12 m6">
                     <a href="{% url 'accounts:expenditure' %}">
@@ -33,13 +74,13 @@
                 </div>
 
                  <div class="col s12 m6">
-                    <a href="">
+                    <a href="{% url 'accounts:revenue' %}">
                     <div class="card">
                         <div class="card-image">
           <img src="{% static 'images/income.jpeg' %}" >
         </div>
                         <div class="card-content">
-                            <p>INCOME</p>
+                            <p>REVENUE</p>
                         </div>
                     </div>
                         </a>
